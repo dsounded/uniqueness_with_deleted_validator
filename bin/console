@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'uniqueness_with_deleted_validator'
+require 'irb'
+IRB.start
