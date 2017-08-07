@@ -10,7 +10,7 @@ describe UniquenessWithDeletedValidator do
     let(:record) { testClass.new(name: 'Peter') }
 
     context 'exists returns false' do
-      before { allow(testClass).to receive_message_chain(:with_deleted, :exists?).and_return false }
+      before { allow(testClass).to receive_message_chain(:with_deleted, :where, :where, :not, :exists?).and_return false }
 
       it 'is valid' do
         expect(record).to be_valid
@@ -19,7 +19,7 @@ describe UniquenessWithDeletedValidator do
 
     context 'exist returns true' do
       before do
-        allow(testClass).to receive_message_chain(:with_deleted, :exists?).and_return true
+        allow(testClass).to receive_message_chain(:with_deleted, :where, :where, :not, :exists?).and_return true
         allow(I18n).to receive(:t).with('.activerecord.errors.base.taken').and_return 'has already been taken'
       end
 
@@ -52,7 +52,7 @@ describe UniquenessWithDeletedValidator do
     let(:record) { testClassWithShorthand.new(name: 'Peter') }
 
     context 'exists returns false' do
-      before { allow(testClassWithShorthand).to receive_message_chain(:with_deleted, :exists?).and_return false }
+      before { allow(testClassWithShorthand).to receive_message_chain(:with_deleted, :where, :where, :not, :exists?).and_return false }
 
       it 'is valid' do
         expect(record).to be_valid
@@ -61,7 +61,7 @@ describe UniquenessWithDeletedValidator do
 
     context 'exist returns true' do
       before do
-        allow(testClassWithShorthand).to receive_message_chain(:with_deleted, :exists?).and_return true
+        allow(testClassWithShorthand).to receive_message_chain(:with_deleted, :where, :where, :not, :exists?).and_return true
         allow(I18n).to receive(:t).with('.activerecord.errors.base.taken').and_return 'has already been taken'
       end
 

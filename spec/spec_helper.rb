@@ -9,13 +9,13 @@ class TestModel
   include ActiveModel::Validations
   include ActiveModel::Dirty
 
-  define_attribute_methods :name
+  define_attribute_methods :name, :id
 
   def self.model_name
     ActiveModel::Name.new(self, nil, 'test')
   end
 
-  attr_reader :name
+  attr_reader :name, :id
 
   def initialize(attributes = {})
     @attributes = attributes
